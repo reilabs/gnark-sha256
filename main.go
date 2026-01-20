@@ -190,7 +190,6 @@ func (hasher *Hasher) add4(a, b, c, d frontend.Variable) frontend.Variable {
 func (hasher *Hasher) add6(a, b, c, d, e, f frontend.Variable) frontend.Variable {
 	carry, res := hasher.unsafeAddN([]frontend.Variable{a, b, c, d, e, f})
 	// carry is 0/1/2/3/4/5, which means y = 2*carry - 5 is -5/-3/-1/1/3/5, which means y^2 is 1/9/25.
-	// So we check y^2 * (y^2 - 4) * (y^2 - 16) * (y^2 - 36) == 0
 	y := hasher.api.Sub(hasher.api.Mul(2, carry), 5)
 	ysq := hasher.api.Mul(y, y)
 	zero := hasher.api.Mul(
