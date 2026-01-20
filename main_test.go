@@ -9,7 +9,7 @@ import (
 )
 
 func TestCircuit(t *testing.T) {
-	var circuit Circuit
+	circuit := Circuit{Iters: 1}
 
 	assignment := Circuit{
 		Iters:  1,

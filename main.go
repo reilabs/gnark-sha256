@@ -459,13 +459,13 @@ func main() {
 
 	lastCst := 0
 	for i := 0; i < 37; i++ {
-		ccs, err := frontend.Compile(ecc.BN254.ScalarField(), r1cs.NewBuilder, &Circuit{Iters: i})
+		ccs, err := frontend.Compile(ecc.BN254.ScalarField(), r1cs.NewBuilder, &Circuit{Iters: i + 1})
 		if err != nil {
 			panic(err)
 		}
 		newCst := ccs.GetNbConstraints()
 
-		fmt.Println(i, "\t", newCst, "\t", newCst-lastCst)
+		fmt.Println(i, "\t", newCst, "\t", newCst-lastCst, "\t", int(float64(newCst)/float64(i+1)))
 		lastCst = newCst
 	}
 }
