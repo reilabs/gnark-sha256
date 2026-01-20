@@ -5,6 +5,7 @@ import (
 	"github.com/consensys/gnark-crypto/ecc"
 	"github.com/consensys/gnark/frontend"
 	"github.com/consensys/gnark/frontend/cs/r1cs"
+	"github.com/consensys/gnark/logger"
 	"github.com/consensys/gnark/std/lookup/logderivlookup"
 	"math/big"
 )
@@ -456,6 +457,8 @@ func main() {
 		fmt.Print(o[i], ",")
 	}
 	fmt.Println("}")
+
+	logger.Disable()
 
 	lastCst := 0
 	for i := 0; i < 37; i++ {
